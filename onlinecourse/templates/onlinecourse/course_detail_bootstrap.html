@@ -54,14 +54,28 @@
             <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
             https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
 
-            <!--
-
-            A collapse example here:
-            <div id="exam" class="collapse">
-                Click to expand elements within the collapse div
+            {% if user.is_authenticated %}
+                <!--A collapse example + my added button with toggle collapse to give option:-->
+                <div id="exam" class="collapse">
+                    <button data-toggle="collapse" data-target="#exam">Collapsible</button>
+                    </div>
+                <div class='exam-questions'>
+                    <h3>Start Exam</h3>
+                        <table>
+                            {% for i in questions %}
+                            <tr>
+                                <td class='text-primary'>{{forloop.counter}} {{i.question_text}}</td>
+                            {% for i in choices %}
+                            <tr>
+                                <td class='text-primary'>{{forloop.counter}} {{i.choice}}</td>
+                            </tr>
+                            {% end for %}{% end for %}
+                        </table>
+                    </li>
                 </div>
+            {% endif %}
 
-            -->
+            
 
             <!-- <HINT> If user is authenticated, show course exam with a list of question -->
 
