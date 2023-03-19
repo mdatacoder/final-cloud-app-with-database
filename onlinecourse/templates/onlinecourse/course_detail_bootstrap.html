@@ -65,14 +65,15 @@
                         <table>
                             <!-- Each example will have many questions -->
                             {% for i in questions %}
-                            <tr>
-                                <td class='text-primary'>{{forloop.counter}} {{i.question_text}}</td>
-                            <!-- and many choices -->
-                            {% for i in choices %}
-                            <tr>
-                                <td class='text-primary'>{{forloop.counter}} {{i.choice}}</td>
-                            </tr>
-                            {% end for %}{% end for %}
+                                <tr>
+                                    <td class='text-primary'>{{forloop.counter}} {{i.question_text}}</td>
+                                <!-- and many choices -->
+                                {% for i in choices %}
+                                <tr>
+                                    <td class='text-primary'>{{forloop.counter}} {{i.choice}}</td>
+                                </tr>
+                                {% end for %}
+                            {% end for %}
                         </table>
                     </li>
                 </div>
@@ -89,20 +90,21 @@
                     <div class="card mt-1">
                         <div class="card-header"><h5>{{ question.question_text}}</h5></div>
                         {% csrf_token %}
-                        <div class="form-group">
-                            {% for i in choices %}
-                            <div class="form-check">
-                                <label class="form-check-label">
-                                    <input type="checkbox" name="choice_{{choice.id}}"
-                                            class="form-check-input" id="{{choice.id}}"
-                                            value="{{choice.id}}">{{ choice.choice_text }}
-                                </label>
+                            <div class="form-group">
+                                {% for i in choices %}
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                          <input type="checkbox" name="choice_{{choice.id}}"
+                                                class="form-check-input" id="{{choice.id}}"
+                                                value="{{choice.id}}">{{ choice.choice_text }}
+                                        </label>
+                                    </div>
+                                {% end for %}
                             </div>
-                            {% end for %}
                         </div>
                     </div>
-                <input class="btn btn-success btn-block" type="submit" value="Submit">
                 {% end for %}
+                <input class="btn btn-success btn-block" type="submit" value="Submit">
             </form> 
 
             <!--Check here to see more details Bootstrap checkbox
